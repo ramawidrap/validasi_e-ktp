@@ -1,6 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:validasi_ektp/first_screen.dart';
+import 'package:validasi_ektp/InputScreen.dart';
+import 'package:validasi_ektp/ktp_service.dart';
 
 import 'controller.dart';
 
@@ -9,16 +11,14 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  final Controller controller = Get.put(Controller());
-  // This widget is the root of your application.
+  final Controller controller = Get.put(Controller(KtpService(Dio())));
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-      ),
-      home: FirstScreen(),
+      theme: ThemeData(),
+      home: InputScreen(),
     );
   }
 }
-
